@@ -8,12 +8,12 @@
 import Foundation
 
 struct FetchService {
-  enum FetchError: Error {
+  private enum FetchError: Error {
     case badResponse
   }
   // Steps to create a network connection
   // MARK: - Get the URL/Endpoint
-  let baseURL = URL(string: "https://breaking-bad-api-six.vercel.app/api")!
+  private let baseURL = URL(string: "https://breaking-bad-api-six.vercel.app/api")!
   
   // Example:
   // https://breaking-bad-api-six.vercel.app/api/quotes/random?production=Breaking+Bad
@@ -72,5 +72,22 @@ struct FetchService {
       }
     }
     return nil
+  }
+  
+  func fetchEpisode(from show: String) async throws -> Episode? {
+    let episodeURL = baseURL.appending(path: "episodes")
+    let fetchURL = episodeURL.appending(queryItems: [URLQueryItem(name: "production", value: show)])
+    
+    let (data, response) = try await URLSession.shared.data(from: fetchURL)
+    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+      throw FetchError.badResponse
+    }
+    
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    
+    let episodes = try decoder.decode([Episode].self, from: data)
+    
+    return episodes.randomElement()
   }
 }

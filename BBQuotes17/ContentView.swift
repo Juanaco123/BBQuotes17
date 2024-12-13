@@ -10,16 +10,22 @@ import SwiftUI
 struct ContentView: View {
   var body: some View {
     TabView {
-      Text("Breaking Bad View")
+      FetchView(show: Constants.breakingBadName)
         .toolbarBackground(.visible, for: .tabBar)
         .tabItem {
-          Label("Breaking Bad", systemImage: "tortoise")
+          Label(Constants.breakingBadName, systemImage: "tortoise")
         }
       
-      Text("Better Call Saul View")
+      FetchView(show: Constants.betterCallSaulName)
         .toolbarBackground(.visible, for: .tabBar)
         .tabItem {
-          Label("Better Call Saul", systemImage: "briefcase")
+          Label(Constants.betterCallSaulName, systemImage: "briefcase")
+        }
+      
+      FetchView(show: Constants.elCaminoName)
+        .toolbarBackground(.visible, for: .tabBar)
+        .tabItem {
+          Label(Constants.elCaminoName, systemImage: "car")
         }
     }
     .preferredColorScheme(.dark)

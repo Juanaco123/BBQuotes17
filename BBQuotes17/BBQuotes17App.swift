@@ -15,3 +15,23 @@ struct BBQuotes17App: App {
     }
   }
 }
+
+
+/*
+ Version 2 Feature List:
+ ✅ Add El Camino Tab
+ ✅ Utilize all character images on CharacterView
+ ✅ On CharacterView, auto-scroll to bottom after status
+ ✅ Fetch episode data
+ ✅ Extend string to get rid of long images and color names.
+ ✅ Create static constants for show names
+*/
+
+/*
+ Challenges:
+ - Fetch Quote on launch
+ - Show random character image
+ - Fetch random character (characters/random)
+ - Fetch Random Quote from Character (https://breaking-bad-api-six.vercel.app/api/quotes/random?character=Walter+White)
+ - Fetch Simpsons Quote (https://thesimpsonsquoteapi.glitch.me
+*/

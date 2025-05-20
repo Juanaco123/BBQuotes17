@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterView: View {
-  let character: Character
+  let character: BBCharacter
   let show: String
   
   var body: some View {

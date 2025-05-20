@@ -17,13 +17,49 @@ struct FetchService {
   
   // Example:
   // https://breaking-bad-api-six.vercel.app/api/quotes/random?production=Breaking+Bad
-  func fetchQuote(from show: String) async throws  -> Quote {
+  func fetchQuote(from show: String) async throws  -> Quote { //progressHandler: @escaping (Double) -> Void) async throws  -> Quote {
     
     // MARK: - Build the fetch URL
     let quoteURL = baseURL.appending(path: "quotes/random")
     
     let fetchURL = quoteURL.appending(queryItems: [URLQueryItem(name: "production", value: show)])
-    // MARK: - Fetch data
+    
+    // MARK: [This new lines is to add a loader based on the download process of the data]
+//    var observation: NSKeyValueObservation?
+//    
+//    return try await withCheckedThrowingContinuation { continuation in
+//      let task = URLSession.shared.dataTask(with: fetchURL) { data, response, error in
+//        observation?.invalidate()
+//        
+//        if let error = error {
+//          continuation.resume(throwing: error)
+//        }
+//        
+//        guard let data = data,
+//              let response = response as? HTTPURLResponse,
+//              response.statusCode == 200 else {
+//          continuation.resume(throwing: FetchError.badResponse)
+//          return
+//        }
+//        
+//        do {
+//          let quote = try JSONDecoder().decode(Quote.self, from: data)
+//          continuation.resume(returning: quote)
+//        } catch {
+//          continuation.resume(throwing: error)
+//        }
+//      }
+//      
+//      observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+//        DispatchQueue.main.async {
+//          progressHandler(progress.fractionCompleted)
+//        }
+//      }
+//      
+//      task.resume()
+//    }
+    // MARK: I don't delete this lines of code bacause is useful for me as reference
+//    // MARK: - Fetch data
     let (data, response) = try await URLSession.shared.data(from: fetchURL)
     
     // MARK: - Handle response
@@ -34,12 +70,12 @@ struct FetchService {
     //MARK: - Decode data
     let quote = try JSONDecoder().decode(Quote.self, from: data)
     
-    // MARK: - Return the data
-    // quote
+//     MARK: - Return the data
+//     quote
     return quote
   }
   
-  func fetchCharacter(_ name: String) async throws -> Character {
+  func fetchCharacter(_ name: String) async throws -> BBCharacter {
     let characterURL = baseURL.appending(path: "characters")
     let fetchURL = characterURL.appending(queryItems: [URLQueryItem(name: "name", value: name)])
     
@@ -50,7 +86,7 @@ struct FetchService {
     
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
-    let characters = try decoder.decode([Character].self, from: data)
+    let characters = try decoder.decode([ BBCharacter].self, from: data)
     return characters[0]
   }
   

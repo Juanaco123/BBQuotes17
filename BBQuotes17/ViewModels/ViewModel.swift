@@ -5,10 +5,13 @@
 //  Created by Juan Camilo Victoria Pacheco on 29/11/24.
 //
 
+import SwiftUI
 import Foundation
 
 @Observable
+@MainActor
 class ViewModel {
+  // 1. Create fetch status
   enum FetchStatus {
     case notStarted
     case fetching
@@ -17,15 +20,14 @@ class ViewModel {
     case failed(error: Error)
   }
   
-  // 1.
-  
   // 2. create a fetch status property
   private(set) var status: FetchStatus = .notStarted // -> this way, the property is partialy private. The view can only get the value, but not change it.
   
   private let fetcher = FetchService()
   
+  var progress: CGFloat = 0.0
   var quote: Quote
-  var character: Character
+  var character: BBCharacter
   var episode: Episode
   
   init() {
@@ -38,7 +40,7 @@ class ViewModel {
     
     let characterData = try! Data(contentsOf: Bundle.main.url(forResource: "samplecharacter", withExtension: "json")!)
     
-    character = try! decoder.decode(Character.self, from: characterData)
+    character = try! decoder.decode(BBCharacter.self, from: characterData)
     
     let episodeData = try! Data(contentsOf: Bundle.main.url(forResource: "sampleepisode", withExtension: "json")!)
     
@@ -47,7 +49,7 @@ class ViewModel {
   
   func getQuoteData(for show: String) async {
     status = .fetching
-    
+    progress = 0.0
     do {
       
       quote = try await fetcher.fetchQuote(from: show)

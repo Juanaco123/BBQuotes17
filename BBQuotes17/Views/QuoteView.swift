@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct FetchView: View {
+struct QuoteView: View {
   
-  let viewModel = ViewModel()
+  @State var viewModel = ViewModel()
   let show: String
   
   @State var showCharacterInfo: Bool = false
@@ -30,7 +30,7 @@ struct FetchView: View {
               EmptyView()
               
             case .fetching:
-              ProgressView()
+              ProgressBar()
               
             case .successQuote:
               Text("\"\(viewModel.quote.quote)\"")
@@ -124,7 +124,7 @@ struct FetchView: View {
 
 struct QuoteView_preview: PreviewProvider {
   static var previews: some View {
-    FetchView(show: Constants.breakingBadName)
+    QuoteView(show: Constants.breakingBadName)
       .preferredColorScheme(.dark)
   }
 }

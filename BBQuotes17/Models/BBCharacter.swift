@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character: Decodable {
+struct BBCharacter: Decodable {
   let name: String
   let birthday: String
   let occupations: [String]

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5629BF7D2CFA6922004F8E10 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629BF7C2CFA6922004F8E10 /* ViewModel.swift */; };
 		565A38BF2DDA32FC00AB6D4C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A38BE2DDA32A600AB6D4C /* ProgressBar.swift */; };
+		565A38E52DDCD5D500AB6D4C /* AsyncCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A38E42DDCD5D200AB6D4C /* AsyncCarouselView.swift */; };
 		567620A32D09DCF900E8A143 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567620A22D09DCF900E8A143 /* CharacterView.swift */; };
 		567BACB82D068BAF001C97D5 /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BACB72D068BAF001C97D5 /* QuoteView.swift */; };
 		569910E62C1B2AA3006DFC79 /* BBQuotes17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569910E52C1B2AA3006DFC79 /* BBQuotes17App.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		5629BF7C2CFA6922004F8E10 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		565A38BE2DDA32A600AB6D4C /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		565A38E42DDCD5D200AB6D4C /* AsyncCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCarouselView.swift; sourceTree = "<group>"; };
 		567620A22D09DCF900E8A143 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		567BACB72D068BAF001C97D5 /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		569910E22C1B2AA3006DFC79 /* BBQuotes17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBQuotes17.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 		565A38BD2DDA328200AB6D4C /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				565A38E42DDCD5D200AB6D4C /* AsyncCarouselView.swift */,
 				565A38BE2DDA32A600AB6D4C /* ProgressBar.swift */,
 			);
 			path = DesignSystem;
@@ -250,6 +253,7 @@
 				569910E82C1B2AA3006DFC79 /* ContentView.swift in Sources */,
 				569D5ADB2D0C77FE00D9980D /* EpisodeView.swift in Sources */,
 				569910FB2C1B314C006DFC79 /* Quote.swift in Sources */,
+				565A38E52DDCD5D500AB6D4C /* AsyncCarouselView.swift in Sources */,
 				56A457372D0BB94600BE6A66 /* Episode.swift in Sources */,
 				565A38BF2DDA32FC00AB6D4C /* ProgressBar.swift in Sources */,
 				567BACB82D068BAF001C97D5 /* QuoteView.swift in Sources */,
@@ -410,6 +414,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.juanaco123.BBQuotes17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -440,6 +448,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.juanaco123.BBQuotes17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

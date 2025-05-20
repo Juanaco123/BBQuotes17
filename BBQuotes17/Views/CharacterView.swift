@@ -10,7 +10,7 @@ import SwiftUI
 struct CharacterView: View {
   let character: BBCharacter
   let show: String
-  
+   
   var body: some View {
     GeometryReader { geometry in
       ScrollViewReader { proxy in
@@ -21,20 +21,11 @@ struct CharacterView: View {
             .scaledToFit()
           
           ScrollView {
-            TabView {
-              ForEach(character.images, id: \.self) { characterImageURL in
-                AsyncImage(url: characterImageURL) { image in
-                  image
-                    .resizable()
-                    .scaledToFill()
-                } placeholder: {
-                  ProgressView()
-                }
-              }
-            }
-            .tabViewStyle(.page)
-            .frame(width: geometry.size.width / 1.2, height: geometry.size.height / 1.7)
-            .clipShape(.rect(cornerRadius: 25))
+            AsyncCarouselView(
+              items: character.images,
+              width: geometry.size.width / 1.2,
+              height: geometry.size.height / 1.7
+            )
             .padding(.top, 60)
             
             VStack(alignment: .leading) {
